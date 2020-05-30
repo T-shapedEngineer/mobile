@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="Dashboard">
+  <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+  <title>Mobile</title>
+  <link type="image/png" href="images/adityalogo.png" rel="icon">
+  <!-- Bootstrap core CSS-->
+  <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
+  <script src="javascripts/jquery-1.11.1.min.js"></script>
+  <script src="javascripts/bootstrap.min.js"></script>
+  <!-- external css-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Custom styles for this template-->
+  <link href="stylesheets/style.css" rel="stylesheet">
+  <link href="stylesheets/style-responsive.css" rel="stylesheet">
+  <!--Date Picker-->
+  <link href="stylesheets/jquery-ui.css" rel="stylesheet">
+  <script type="text/javascript" src="angular/angular.min.js"></script>
+  <script type="text/javascript" src="angular/mobile.js"></script>
+  <style>
+    .panel-box {
+      display: table;
+      table-layout: fixed;
+      width: 100%;
+      height: 30px;
+      text-align: center;
+      border: medium none;
+    }
+
+    .bg-success {
+      background-color: #A3C86D !important;
+      color: #FFF !important;
+    }
+
+    .bg-warning {
+      background-color: orange !important;
+      color: #FFF !important;
+    }
+
+    .bg-light {
+      background-color: lightblue !important;
+      color: #FFF !important;
+    }
+
+    .bg-lightgreen {
+      background-color: lightgreen !important;
+      color: #FFF !important;
+    }
+
+    .bg-default {
+      background-color: grey !important;
+      color: #FFF !important;
+    }
+
+    .bg-pink {
+      background-color: pink !important;
+      color: #FFF !important;
+    }
+
+    .bg-tomato {
+      background-color: tomato !important;
+      color: #FFF !important;
+    }
+
+    .bg-dodgerblue {
+      background-color: dodgerblue !important;
+      color: #FFF !important;
+    }
+
+    .bg-violet {
+      background-color: violet !important;
+      color: #FFF !important;
+    }
+
+    .success-text {
+      color: #82b33a;
+    }
+
+    .bg-danger {
+      background-color: #FF7857 !important;
+      color: #FFF !important;
+    }
+
+    .danger-text {
+      color: #d15b3d;
+    }
+
+    .panel-box .panel-icon {
+      display: table-cell;
+      padding: px;
+      width: 1%;
+      vertical-align: top;
+      border-radius: 0px;
+      text-align: center;
+      /*border-bottom: 1px solid #fcfcfc;
+      border-top: 1px solid #fcfcfc;
+      border-right: 1px solid #fcfcfc;*/
+    }
+
+    .panel-box .size-h1 {
+      margin-top: 7px;
+    }
+
+    .panel-box .fa {
+      margin-top: 9px;
+    }
+
+    .bg-lovender {
+      background-color: #8075C4 !important;
+      color: #FFF !important;
+    }
+
+    .lovender-text {
+      color: #6a5fb1;
+    }
+
+    .capitalize {
+      text-transform: capitalize;
+    }
+
+    .uppercase {
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body ng-app="mobileApp" ng-controller="mobileController">
+  <section id="container">
+    <!-- header start-->
+    <header class="header black-bg">
+      <div class="sidebar-toggle-box">
+        <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+      </div>
+      <!-- logo start--><a class="logo" href="#"><b><img src="images/mobile.png" style="height:55px;width:100px;margin-top:-13px"></b></a>
+      <!-- logo end-->
+      <div class="top-menu">
+        <ul class="nav pull-right top-menu">
+          <li><a class="logout" href="/logout">Logout</a></li>
+        </ul>
+      </div>
+    </header>
+    <!-- header end-->
+    <!-- sidebar start-->
+    <aside>
+      <div class="nav-collapse" id="sidebar">
+        <!-- sidebar menu start-->
+        <ul class="sidebar-menu" id="nav-accordion">
+          <p class="centered"><a href="#"><i class="fa fa-user-circle" style="font-size:50px"></i></a></p>
+          <h5 class="centered">
+            <p>Mobile Seize</p>
+          </h5>
+          <li class="active"><a data-toggle="tab" href="#dashboard"><i class="fa fa-address-card"></i><span>Dashboard</span></a></li>
+          <li class="sub-menu"><a data-toggle="tab" href="#mobiledata"><i class="fa fa-bars"></i><span>In Office list</span></a></li>
+          <li class="sub-menu"><a data-toggle="tab" href="#returndata"><i class="fa fa-bars"></i><span>Return List</span></a></li>
+          <li class="sub-menu"><a data-toggle="tab" href="#overalldata"><i class="fa fa-bars"></i><span>Overall List</span></a></li>
+          <li class="sub-menu"><a data-toggle="tab" href="#search"><i class="fa fa-search"></i><span>Search </span></a></li>
+        </ul>
+        <!-- sidebar menu end-->
+      </div>
+    </aside>
+    <!-- sidebar end-->
+    <!-- main content start-->
+    <section id="main-content">
+      <section class="wrapper site-min-height">
+        <div class="row mt">
+          <div class="col-lg-12">
+            <div class="tab-content">
+              <div class="tab-pane fade in active" id="dashboard">
+                <div class="container" style="background-color: #eaeaea;width: 100%;height:100%;border-radius: 1px">
+                  <div class="row"><br>
+                    <div class="col-md-8 col-md-offset-2">
+                      <div class="col-md-4 col-sm-12 col-xs-12 marg end">
+                        <div class="hover pan">
+                          <div class="front"><a href="">
+                              <div class="box1">
+                                <p class="test col-md-3 col-sm-3 col-xs-12"> </p>
+                                <p class="test col-md-9 col-sm-9 col-xs-12">Mobiles</p>
+                              </div>
+                            </a></div>
+                        </div>
+                      </div>
+                      <div class="col-md-4 col-sm-12 col-xs-12 marg end">
+                        <div class="hover pan">
+                          <div class="front"><a href="">
+                              <div class="box1">
+                                <p class="test col-md-3 col-sm-3 col-xs-12"> </p>
+                                <p class="test col-md-9 col-sm-9 col-xs-12">In Office</p>
+                              </div>
+                            </a></div>
+                        </div>
+                      </div>
+                      <div class="col-md-4 col-sm-12 col-xs-12 marg end">
+                        <div class="hover pan">
+                          <div class="front"><a href="">
+                              <div class="box1">
+                                <p class="test col-md-3 col-sm-3 col-xs-12"></p>
+                                <p class="test col-md-9 col-sm-9 col-xs-12">Returns </p>
+                              </div>
+                            </a></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-10 col-md-offset-1">
+                    <form>
+                      <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="form-group">
+                          <label>Date:</label>
+                          <input class="form-control" type="date" ng-model="mobile.date" required>
+                        </div>
+                      </div>
+                      <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="form-group">
+                          <label>Time:</label>
+                          <input class="form-control" ng-model="mobile.time" type="time" required>
+                        </div>
+                      </div>
+                      <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="form-group">
+                          <label>Generate ID:</label>
+                          <input class="form-control" type="text" readonly>
+                        </div>
+                      </div>
+                      <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="form-group">
+                          <label>Rollno:</label>
+                          <input class="form-control" type="text" ng-model="mobile.roll" required>
+                        </div>
+                      </div>
+                      <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="form-group">
+                          <label>College:</label>
+                          <select class="form-control" ng-model="mobile.college" onchange="changeCourse('college','course')" required="">
+                            <option value="">--Select--</option>
+                            <option value="Aditya Engineering College">Aditya Engineering College (1st Campus)</option>
+                            <option value="Aditya Engineering College (Polytechnic)">Aditya Engineering College (Polytechnic)</option>
+                            <option value="Aditya College of Engineering &amp; Technology">Aditya College of Engineering &amp; Technology (2nd Campus)</option>
+                            <option value="Aditya College of Engineering &amp; Technology (Polytechnic)">Aditya College of Engineering &amp; Technology (Polytechnic)</option>
+                            <option value="Aditya College of Engineering">Aditya College of Engineering (3rd Campus)</option>
+                            <option value="Aditya College of Engineering (Polytechnic)">Aditya College of Engineering (Polytechnic)</option>
+                            <option value="Aditya Pharmacy College">Aditya Pharmacy College</option>
+                            <option value="Aditya College of Pharmacy">Aditya College of Pharmacy</option>
+                            <option value="Business School">Business School</option>
+                            <option value="CBSE">CBSE</option>
+                            <option value="Aditya Degree College">Aditya Degree College</option>
+                            <option value="Aditya College of Physical Education">Aditya College of Physical Education</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="form-group">
+                          <label>Branch:</label>
+                          <select class="form-control" ng-model="mobile.branch">
+                            <option value="">--Select--</option>
+                            <option value="CSE">CSE</option>
+                            <option value="ECE">ECE</option>
+                            <option value="CIVIL">CIVIL</option>
+                            <option value="MECH">MECH</option>
+                            <option value="PT">PT</option>
+                            <option value="MINING">MINING</option>
+                            <option value="EEE">EEE</option>
+                            <option value="AGRI">AGRI</option>
+                            <option value="IT">IT</option>
+                            <option value="B.Sc(Forensic Science)">B.Sc(Forensic Science)</option>
+                            <option value="CSE(M.Tech)">CSE(M.Tech)</option>
+                            <option value="MECH(M.Tech)">MECH(M.Tech)</option>
+                            <option value="PT(M.Tech)">PT(M.Tech)</option>
+                            <option value="EEE(M.Tech)">EEE(M.Tech)</option>
+                            <option value="ECE(M.Tech)">ECE(M.Tech)</option>
+                            <option value="CIVIL(M.Tech)">CIVIL(M.Tech)</option>
+                            <option value="B.Pharmacy">B.Pharmacy</option>
+                            <option value="M.Pharmacy">M.Pharmacy</option>
+                            <option value="Pharm-D">Pharm-D</option>
+                            <option value="BBA">BBA</option>
+                            <option value="MBA">MBA</option>
+                            <option value="IMBA/PGDM">IMBA/PGDM</option>
+                            <option value="CSE(Diploma)">CSE(Diploma)</option>
+                            <option value="ECE(Diploma)">ECE(Diploma)</option>
+                            <option value="EEE(Diploma)">EEE(Diploma)</option>
+                            <option value="CIVIL(Diploma)">CIVIL(Diploma)</option>
+                            <option value="MECH(Diploma)">MECH(Diploma)</option>
+                            <option value="PT(Diploma)">PT(Diploma)</option>
+                            <option value="IT(Diploma)">IT(Diploma) </option>
+                            <option value="CBSE">CBSE</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="form-group">
+                          <label>Year of Pass:</label>
+                          <input class="form-control" type="text" ng-model="mobile.year" placeholder="PassOutYear" required="">
+                        </div>
+                      </div>
+                      <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="form-group">
+                          <label>Section:</label>
+                          <select class="form-control" ng-model="mobile.section" value="" required="">
+                            <option value="">--Select--</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-4 col-sm-4 col-xs-12 hide">
+                        <div class="form-group">
+                          <label>User:</label>
+                          <input class="form-control" type="text" ng-model="mobile.user" required>
+                        </div>
+                      </div>
+                      <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="form-group">
+                          <label>Name:</label>
+                          <input class="form-control" type="text" ng-model="mobile.name" required>
+                        </div>
+                      </div>
+                      <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="form-group">
+                          <label>Parent Name:</label>
+                          <input class="form-control" type="text" ng-model="mobile.fathname" required>
+                        </div>
+                      </div>
+                      <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="form-group">
+                          <label>Staff Name</label>
+                          <input class="form-control" type="text" ng-model="mobile.facname" required>
+                        </div>
+                      </div>
+                      <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="form-group">
+                          <label>Student Mobile NO:</label>
+                          <input class="form-control" type="text" ng-model="mobile.studnum" required>
+                        </div>
+                      </div>
+                      <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="form-group">
+                          <label>Parent Mobile NO:</label>
+                          <input class="form-control" type="text" ng-model="mobile.fathnum" required>
+                        </div>
+                      </div>
+                      <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="form-group">
+                          <label>Staff Mobile NO:</label>
+                          <input class="form-control" type="text" ng-model="mobile.facnum" required>
+                        </div>
+                      </div>
+                      <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="form-group">
+                          <label>Staff Employee ID:</label>
+                          <input class="form-control" type="text" ng-model="mobile.emplyid" required>
+                        </div>
+                      </div>
+                      <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="form-group">
+                          <label>Mobile Model:</label>
+                          <input class="form-control" type="text" ng-model="mobile.model" required>
+                        </div>
+                      </div>
+                      <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="form-group">
+                          <label>IMEI NO: </label>                          
+                          <input class="form-control" type="number" ng-model="mobile.imei">
+                        </div>
+                      </div>
+                      <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="form-group">
+                          <label>Mobile Color:</label>
+                          <input class="form-control" type="text" ng-model="mobile.color" required>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                          <label>Reason:</label>
+                          <textarea class="form-control" type="text" ng-model="mobile.reason" required></textarea>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-sm-12 centered" style="margin-bottom:20px">
+                        <button class="pdf btn btn-success" ng-click="mobileData(mobile)">Submit</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane fade align" id="mobiledata" ng-init="getmobileData()">
+						  <div class="container" style="background-color: #eaeaea;width: 100%;height:100%;border-radius: 1px">
+						    <div class="row"> <br />
+						      <div class="col-lg-12">
+						        <div class="panel panel-default">
+						          <div class="panel-body">
+						            <div class="table-responsive">
+						              <table class="table table-striped table-bordered table-hover">
+						                <thead>
+						                  <tr>
+						                    <th>Date</th>
+						                    <th>Time</th>
+						                    <th>ID</th>
+						                    <th>RollNo</th>
+						                    <th>Name</th>
+						                    <th>College</th>
+						                    <th>Branch</th>
+						                    <th>Mobile Number</th>
+						                    <th>Parent Name</th>
+						                    <th>Parent Number</th>
+						                    <th>Mobile Model</th>
+						                    <th>IMEI No</th>
+						                    <th>Mobile Color</th>
+						                    <th>Reason</th>
+						                    <th>Staff Name</th>
+						                    <th>EmployID</th>
+						                    <th>Staff Number</th>
+						                    <th>Action</th>
+						                  </tr>
+						                </thead>
+						                <tbody>
+						                    <tr class="odd gradeA" ng-repeat="office in offices">
+						                      <td>{{office.date}}</td>
+						                      <td>{{office.time}}</td>
+						                      <td>{{office.id1}}</td>
+						                      <td>{{office.roll}}</td>
+						                      <td>{{office.college}}</td>
+						                      <td>{{office.branch}}</td>
+						                      <td>{{office.year}}</td>
+						                      <td>{{office.section}}</td>
+						                      <td>{{office.user}}</td>
+						                      <td>{{office.name}}</td>
+						                      <td>{{office.fathname}}</td>
+						                      <td>{{office.facname}}</td>
+						                      <td>{{office.studnum}}</td>
+						                      <td>{{office.fathnum}}</td>
+						                      <td>{{office.facnum}}</td>
+						                      <td>{{office.emplyid}}</td>
+						                      <td>{{office.model}}</td>
+						                      <td>{{office.imei}}</td>
+						                      <td>{{office.color}}</td>
+						                      <td>{{office.reason}}</td>
+						                      <td>
+						                      	<button class="btn btn-primary" ng-click="return(office)">Return</button>
+						                      </td>
+						                    </tr>
+						                </tbody>
+						              </table>
+						            </div>
+						          </div>
+						        </div>
+						      </div>
+						    </div>
+						  </div>
+						</div>
+						<div class="tab-pane fade align" id="mobiledata" ng-init="mobileData()">
+						  <div class="container" style="background-color: #eaeaea;width: 100%;height:100%;border-radius: 1px">
+						    <div class="row"> <br />
+						      <div class="col-lg-12">
+						        <div class="panel panel-default">
+						          <div class="panel-body">
+						            <div class="table-responsive">
+						              <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+						                <thead>
+						                  <tr>
+						                    <th>Date</th>
+						                    <th>Time</th>
+						                    <th>ID</th>
+						                    <th>RollNo</th>
+						                    <th>Name</th>
+						                    <th>College</th>
+						                    <th>Branch</th>
+						                    <th>Mobile Number</th>
+						                    <th>Parent Name</th>
+						                    <th>Parent Number</th>
+						                    <th>Mobile Model</th>
+						                    <th>IMEI No</th>
+						                    <th>Mobile Color</th>
+						                    <th>Reason</th>
+						                    <th>Staff Name</th>
+						                    <th>EmployID</th>
+						                    <th>Staff Number</th>
+						                    <th>Action</th>
+						                  </tr>
+						                </thead>
+						                <tbody>
+						                    <tr class="odd gradeA">
+						                      <td>{{return.date}}</td>
+						                      <td>{{return.time}}</td>
+						                      <td>{{return.id1}}</td>
+						                      <td>{{return.roll}}</td>
+						                      <td>{{return.college}}</td>
+						                      <td>{{return.branch}}</td>
+						                      <td>{{return.year}}</td>
+						                      <td>{{return.section}}</td>
+						                      <td>{{return.user}}</td>
+						                      <td>{{return.name}}</td>
+						                      <td>{{return.fathname}}</td>
+						                      <td>{{return.facname}}</td>
+						                      <td>{{return.studnum}}</td>
+						                      <td>{{return.fathnum}}</td>
+						                      <td>{{return.facnum}}</td>
+						                      <td>{{return.emplyid}}</td>
+						                      <td>{{return.model}}</td>
+						                      <td>{{return.imei}}</td>
+						                      <td>{{return.color}}</td>
+						                      <td>{{return.reason}}</td>
+						                    </tr>
+						                </tbody>
+						              </table>
+						            </div>
+						          </div>
+						        </div>
+						      </div>
+						    </div>
+						  </div>
+						</div>
+						<div class="tab-pane fade align" id="mobiledata">
+						  <div class="container" style="background-color: #eaeaea;width: 100%;height:100%;border-radius: 1px">
+						    <div class="row"> <br />
+						      <div class="col-lg-12">
+						        <div class="panel panel-default">
+						          <div class="panel-body">
+						            <div class="table-responsive">
+						              <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+						                <thead>
+						                  <tr>
+						                    <th>Date</th>
+						                    <th>Time</th>
+						                    <th>ID</th>
+						                    <th>RollNo</th>
+						                    <th>Name</th>
+						                    <th>College</th>
+						                    <th>Branch</th>
+						                    <th>Mobile Number</th>
+						                    <th>Parent Name</th>
+						                    <th>Parent Number</th>
+						                    <th>Mobile Model</th>
+						                    <th>IMEI No</th>
+						                    <th>Mobile Color</th>
+						                    <th>Reason</th>
+						                    <th>Staff Name</th>
+						                    <th>EmployID</th>
+						                    <th>Staff Number</th>
+						                    <th>Action</th>
+						                  </tr>
+						                </thead>
+						                <tbody>
+						                  <eacha>
+						                    <tr class="odd gradeA">
+						                      <td> </td>
+						                      <td> </td>
+						                      <td> </td>
+						                      <td> </td>
+						                      <td> </td>
+						                      <td> </td>
+						                      <td> </td>
+						                      <td> </td>
+						                      <td> </td>
+						                      <td> </td>
+						                      <td> </td>
+						                      <td> </td>
+						                      <td> </td>
+						                      <td> </td>
+						                      <td> </td>
+						                      <td> </td>
+						                      <td> </td>
+						                      <td>
+						                        <button class="btn btn-info return" type="button" data-toggle="modal" data-target="#myModal" value=""></button>
+						                      </td>
+						                    </tr>
+						                  </eacha>
+						                </tbody>
+						              </table>
+						            </div>
+						          </div>
+						        </div>
+						      </div>
+						    </div>
+						  </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</section>
+</section>
+<script src="javascripts/jquery.js"></script>
+<script src="javascripts/bootstrap.min.js"></script>
+<script src="javascripts/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="javascripts/jquery.ui.touch-punch.min.js"></script>
+<script src="javascripts/jquery.dcjqaccordion.2.7.js"></script>
+<script src="javascripts/jquery.scrollTo.min.js"></script>
+<script src="javascripts/jquery.nicescroll.js"></script>
+<!-- common script for all pages-->
+<script src="javascripts/common-scripts.js"></script>
+</body>
+</html>
