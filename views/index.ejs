@@ -128,7 +128,7 @@
     }
   </style>
 </head>
-<body ng-app="mobileApp" ng-controller="mobileController">
+<body ng-app="mobileApp">
   <section id="container">
     <!-- header start-->
     <header class="header black-bg">
@@ -169,7 +169,7 @@
         <div class="row mt">
           <div class="col-lg-12">
             <div class="tab-content">
-              <div class="tab-pane fade in active" id="dashboard">
+              <div class="tab-pane fade in active" id="dashboard" ng-controller="mobileController">
                 <div class="container" style="background-color: #eaeaea;width: 100%;height:100%;border-radius: 1px">
                   <div class="row"><br>
                     <div class="col-md-8 col-md-offset-2">
@@ -380,13 +380,13 @@
                         </div>
                       </div>
                       <div class="col-md-12 col-sm-12 centered" style="margin-bottom:20px">
-                        <button class="pdf btn btn-success" ng-click="mobileData(mobile)">Submit</button>
+                        <button class="pdf btn btn-success" ng-click="officeData(mobile)">Submit</button>
                       </div>
                     </form>
                   </div>
                 </div>
               </div>
-              <div class="tab-pane fade align" id="mobiledata" ng-init="getmobileData()">
+              <div class="tab-pane fade align" id="mobiledata" ng-controller="officeController" ng-init="getmobileData()">
 						  <div class="container" style="background-color: #eaeaea;width: 100%;height:100%;border-radius: 1px">
 						    <div class="row"> <br />
 						      <div class="col-lg-12">
@@ -413,6 +413,9 @@
 						                    <th>Staff Name</th>
 						                    <th>EmployID</th>
 						                    <th>Staff Number</th>
+						                    <th>Model</th>
+						                    <th>IMEI</th>
+						                    <th>Color</th>
 						                    <th>Action</th>
 						                  </tr>
 						                </thead>
@@ -451,14 +454,14 @@
 						    </div>
 						  </div>
 						</div>
-						<div class="tab-pane fade align" id="mobiledata" ng-init="mobileData()">
+						<div class="tab-pane fade align" id="returndata" ng-controller="returnmobileController()" ng-init="returnmobileData()">
 						  <div class="container" style="background-color: #eaeaea;width: 100%;height:100%;border-radius: 1px">
 						    <div class="row"> <br />
 						      <div class="col-lg-12">
 						        <div class="panel panel-default">
 						          <div class="panel-body">
 						            <div class="table-responsive">
-						              <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+						              <table class="table table-striped table-bordered table-hover">
 						                <thead>
 						                  <tr>
 						                    <th>Date</th>
@@ -482,7 +485,7 @@
 						                  </tr>
 						                </thead>
 						                <tbody>
-						                    <tr class="odd gradeA">
+						                    <tr class="odd gradeA" ng-repeat="return in returns">
 						                      <td>{{return.date}}</td>
 						                      <td>{{return.time}}</td>
 						                      <td>{{return.id1}}</td>

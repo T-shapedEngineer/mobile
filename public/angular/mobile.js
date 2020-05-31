@@ -1,47 +1,49 @@
 var app = angular.module('mobileApp', []);
 app.controller('mobileController', function($scope,$http){
-  $scope.mobileData = function(mobile){
+  $scope.officeData = function(mobile){
     $http({
     	method : 'POST',
     	url : 'postData',
     	data : $scope.mobile
     }).then(function success(response){
       alert('Inserted Successfully');
+      //$scope.offices.push(response.data)
+      $scope.mobile = {}
     }, function error(response){
       alert('Error Occured');
     })
   }
-
-  $scope.getOfficeData = function(mobile){
+});
+app.controller('officeController', function($scope,$http){
+  $scope.getmobileData = function(mobile){
     $http({
     	method : 'GET',
     	url : 'getofficeData',
     }).then(function success(response){
-
+      $scope.offices = response.data
     }, function error(response){
       alert('Error Occured');
     })
   }
-
   $scope.return = function(office){
     $http({
-    	method : 'POST',
-    	url : 'updateData'+$scope._id,
-    	data : $scope.office
+    	method : 'PUT',
+    	url : '/updateData/'+office._id,
+    	data : office
     }).then(function success(response){
-      alert('Inserted Successfully');
+      alert('Updated Successfully');
     }, function error(response){
       alert('Error Occured');
     })
   }
-
-
-  $scope.mobileData = function(mobile){
+});
+app.controller('returnmobileController', function($scope,$http){
+  $scope.returnmobileData = function(mobile){
     $http({
     	method : 'GET',
-    	url : 'getData',
+    	url : '/getreturnData',
     }).then(function success(response){
-    	
+    	$scope.returns = response.data
     }, function error(response){
       alert('Error Occured');
     })

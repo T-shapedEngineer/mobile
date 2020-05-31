@@ -59,7 +59,7 @@ router.get('/getofficeData', function(req, res) {
 	})
 });
 //update status
-router.put('/updateData', function(req, res) {
+router.put('/updateData/:id', function(req, res) {
 	collection.update({"_id":req.params.id},{$set:{"status":"return"}}, function(err,docs){
 	if(err){
   		res.send(500);
